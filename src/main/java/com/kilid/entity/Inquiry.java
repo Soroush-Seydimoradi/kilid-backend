@@ -1,4 +1,4 @@
-package com.kilid.model;
+package com.kilid.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -23,5 +23,8 @@ public class Inquiry {
     private String message ;
 
     private LocalDateTime createdAt = LocalDateTime.now() ;
+
+    private PropertyType propertyType;
+
 
 }
