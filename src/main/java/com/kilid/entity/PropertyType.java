@@ -1,4 +1,4 @@
-package com.kilid.model;
+package com.kilid.entity;
 
 public enum PropertyType {
     APARTMENT ,

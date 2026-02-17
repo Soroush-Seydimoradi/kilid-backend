@@ -1,20 +1,21 @@
-package com.kilid.model;
+package com.kilid.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import java.util.List;
 
 @Entity
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor @Builder
-public class Image {
+public class Feature {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id ;
 
-    private String url ;
+    private String name ;
 
-    @ManyToOne
-    @JoinColumn(name = "property_id")
-    private Property property ;
+    @ManyToMany(mappedBy = "features")
+    private List<Property> properties ;
+
 }
