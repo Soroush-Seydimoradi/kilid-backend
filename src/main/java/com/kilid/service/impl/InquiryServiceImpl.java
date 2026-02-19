@@ -23,15 +23,12 @@ public class InquiryServiceImpl implements InquiryService {
         return inquiryRepository.save(inquiry);
     }
 
+
     @Override
     public List<Inquiry> getInquiriesByUser(User sender) {
         return inquiryRepository.findBySender(sender);
     }
 
-    @Override
-    public List<Inquiry> getInquiriesByProperty(Property property) {
-        return inquiryRepository.findByPropertyType(property.getPropertyType());
-    }
 
     @Override
     public void deleteInquiry(Long id) {

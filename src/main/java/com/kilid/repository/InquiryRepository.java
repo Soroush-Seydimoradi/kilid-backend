@@ -1,9 +1,6 @@
 package com.kilid.repository;
 
-import com.kilid.entity.Inquiry;
-import com.kilid.entity.PropertyType;
-import com.kilid.entity.User;
-import com.kilid.entity.Property;
+import com.kilid.entity.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

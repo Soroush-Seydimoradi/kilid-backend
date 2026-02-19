@@ -24,20 +24,6 @@ public class InquiryController {
         return ResponseEntity.ok(inquiryService.saveInquiry(inquiry));
     }
 
-    @GetMapping("/user/{userId}")
-    public ResponseEntity<List<Inquiry>> getInquiriesByUser(@PathVariable Long userId) {
-        User user = new User();
-        user.setId(userId);
-        return ResponseEntity.ok(inquiryService.getInquiriesByUser(user));
-    }
-
-    @GetMapping("/property/{propertyId}")
-    public ResponseEntity<List<Inquiry>> getInquiriesByProperty(@PathVariable Long propertyId) {
-        Property property = new Property();
-        property.setId(propertyId);
-        return ResponseEntity.ok(inquiryService.getInquiriesByProperty(property));
-    }
-
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteInquiry(@PathVariable Long id) {
         inquiryService.deleteInquiry(id);

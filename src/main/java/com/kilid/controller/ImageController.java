@@ -29,12 +29,6 @@ public class ImageController {
         return ResponseEntity.ok(imageService.getAllImages());
     }
 
-    @GetMapping("/property/{propertyId}")
-    public ResponseEntity<List<Image>> getImagesByProperty(@PathVariable Long propertyId) {
-        Property property = new Property();
-        property.setId(propertyId);
-        return ResponseEntity.ok(imageService.getImagesByProperty(property));
-    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteImage(@PathVariable Long id) {

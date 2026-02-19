@@ -19,19 +19,16 @@ public class PropertyController {
         this.propertyService = propertyService;
     }
 
-    // ➕ افزودن ملک جدید
     @PostMapping
     public ResponseEntity<Property> createProperty(@RequestBody Property property) {
         return ResponseEntity.ok(propertyService.saveProperty(property));
     }
 
-    // 📄 دریافت همه ملک‌ها
     @GetMapping
     public ResponseEntity<List<Property>> getAllProperties() {
         return ResponseEntity.ok(propertyService.getAllProperties());
     }
 
-    // 🔍 دریافت ملک بر اساس ID
     @GetMapping("/{id}")
     public ResponseEntity<Property> getPropertyById(@PathVariable Long id) {
         Optional<Property> property = propertyService.getPropertyById(id);
@@ -39,13 +36,11 @@ public class PropertyController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // 🔎 فیلتر بر اساس نوع ملک
     @GetMapping("/type/{type}")
     public ResponseEntity<List<Property>> getPropertiesByType(@PathVariable PropertyType propertyType) {
         return ResponseEntity.ok(propertyService.getPropertiesByType(propertyType));
     }
 
-    // 🗺️ Geo Query: پیدا کردن ملک‌ها در شعاع مشخص
     @GetMapping("/near")
     public ResponseEntity<List<Property>> getNearbyProperties(
             @RequestParam double lat,
@@ -54,7 +49,6 @@ public class PropertyController {
         return ResponseEntity.ok(propertyService.getPropertiesWithinDistance(lng, lat, radius));
     }
 
-    // 🗑️ حذف ملک
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteProperty(@PathVariable Long id) {
         propertyService.deleteProperty(id);
