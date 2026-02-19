@@ -4,6 +4,7 @@ import com.kilid.entity.Property;
 import com.kilid.entity.PropertyType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.locationtech.jts.geom.Point;
 import java.util.List;
@@ -17,7 +18,10 @@ public interface PropertyRepository extends JpaRepository<Property, Long> {
 
     @Query(value = "SELECT p.* FROM property p " +
             "JOIN location l ON l.id = p.location_id " +
-            "WHERE ST_DWithin(l.coordinates, :point, :radius)",
+            "WHERE ST_DWithin(l.coordinates::geography, " +
+            "ST_SetSRID(ST_MakePoint(:lng, :lat), 4326)::geography, :radius)",
             nativeQuery = true)
-    List<Property> findAllWithinDistance(Point point, double radius);
+    List<Property> findAllWithinDistance(@Param("lng") double longitude,
+                                         @Param("lat") double latitude,
+                                         @Param("radius") double radiusMeters);
 }
