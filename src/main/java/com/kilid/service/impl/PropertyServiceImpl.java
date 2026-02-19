@@ -42,4 +42,9 @@ public class PropertyServiceImpl implements PropertyService {
     public void deleteProperty(Long id) {
         propertyRepository.deleteById(id);
     }
+
+    @Override
+    public List<Property> getPropertiesWithinDistance(double longitude, double latitude, double radiusMeters) {
+        return propertyRepository.findAllWithinDistance(longitude, latitude, radiusMeters);
+    }
 }
