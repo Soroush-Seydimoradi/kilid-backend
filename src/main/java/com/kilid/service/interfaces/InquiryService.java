@@ -8,6 +8,5 @@ import java.util.List;
 public interface InquiryService {
     Inquiry saveInquiry(Inquiry inquiry);
     List<Inquiry> getInquiriesByUser(User user);
-    List<Inquiry> getInquiriesByProperty(Property property);
     void deleteInquiry(Long id);
 }
